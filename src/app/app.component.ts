@@ -3,9 +3,14 @@ import { Store } from '@ngrx/store';
 import { INCREMENT, DECREMENT, RESET } from './counter';
 import { Observable } from 'rxjs';
 
-interface AppState {
+interface AppStateCounter {
   counter: number;
 }
+
+interface AppStateAppender {
+	appender: string;
+}
+
 
 @Component({
   selector: 'app-root',
@@ -13,11 +18,12 @@ interface AppState {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'todo-list';
   counter: Observable<number>;
+	appender: Observable<string>;
 
-	constructor(private store: Store<AppState>){
-		this.counter = store.select('counter');
+	constructor(private store: Store<AppStateAppender>){
+		//this.counter = store.select('counter');
+		this.appender = store.select('appender');
 	}
 
 	increment(){
