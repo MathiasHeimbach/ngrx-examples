@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { INCREMENT, DECREMENT, RESET } from './counter';
+import { APPENDS, APPENDT, RESETAPPEND } from './appender';
 import { Observable } from 'rxjs';
 
 interface AppStateCounter {
@@ -21,20 +22,32 @@ export class AppComponent {
   counter: Observable<number>;
 	appender: Observable<string>;
 
-	constructor(private store: Store<AppStateAppender>){
-		//this.counter = store.select('counter');
-		this.appender = store.select('appender');
+	constructor(private storeAppender: Store<AppStateAppender>, private storeCounter: Store<AppStateCounter>){
+		this.counter = storeCounter.select('counter');
+		this.appender = storeAppender.select('appender');
 	}
 
 	increment(){
-		this.store.dispatch({ type: INCREMENT });
+		this.storeCounter.dispatch({ type: INCREMENT });
 	}
 
 	decrement(){
-		this.store.dispatch({ type: DECREMENT });
+		this.storeCounter.dispatch({ type: DECREMENT });
 	}
 
 	reset(){
-		this.store.dispatch({ type: RESET });
+		this.storeCounter.dispatch({ type: RESET });
+	}
+
+	appendS(){
+		this.storeAppender.dispatch({ type: APPENDS });
+	}
+
+	appendT(){
+		this.storeAppender.dispatch({ type: APPENDT });
+	}
+
+	resetAppends(){
+		this.storeAppender.dispatch({ type: RESETAPPEND });
 	}
 }

@@ -1,18 +1,18 @@
 import { ActionReducer, Action } from '@ngrx/store';
 
-export const INCREMENT = 'INCREMENT';
-export const DECREMENT = 'DECREMENT';
-export const RESET = 'RESET';
+export const APPENDS = 'APPENDS';
+export const APPENDT = 'APPENDT';
+export const RESETAPPEND = 'RESETAPPEND';
 
 export function appenderReducer(state: string = '', action: Action) {
 	switch (action.type) {
-		case INCREMENT:
+		case APPENDS:
 			return state + 'ssss';
 
-		case DECREMENT:
+		case APPENDT:
 			return state + 'tttt';
 
-		case RESET:
+		case RESETAPPEND:
 			return '';
 
 		default:
