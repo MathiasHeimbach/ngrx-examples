@@ -1,0 +1,25 @@
+<ng-template let-item="item">
+<ul
+  [nsRouterLink]="['/item', item.id]"
+  rows="*"
+  columns="auto,auto, *"
+>
+  <image
+    [src]="item.thumb === undefined ? item.image : item.thumb"
+    width="25"
+    height="25"
+    paddingLeft="25"
+    paddingRight="10"
+    col="0"
+  >
+  </image>
+
+  <Label [text]="item.name" col="1"></Label>
+  <Label
+    textAlignment="right"
+    paddingRight="25"
+    [text]="item.market_cap_rank"
+    col="2"
+  ></Label>
+</ul>
+</ng-template>

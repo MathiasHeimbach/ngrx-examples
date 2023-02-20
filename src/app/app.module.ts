@@ -1,19 +1,25 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {
+  NgModule,
+  NO_ERRORS_SCHEMA,
+} from '@angular/core';
 
-import { StoreModule } from '@ngrx/store';
-import { counterReducer } from './counter';
 import { AppComponent } from './app.component';
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { NativeScriptModule } from '@nativescript/angular';
+//import { AppRoutingModule } from './app-routing.module';
+
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
   imports: [
-    BrowserModule,
-    StoreModule.forRoot({ counter: counterReducer })
+    NativeScriptModule,
+    //AppRoutingModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+
+  schemas: [NO_ERRORS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}
