@@ -32,3 +32,4 @@ export class AppComponent {
 		this.store.dispatch({ type: RESET });
 	}
 }
+	
